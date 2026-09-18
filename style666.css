@@ -439,3 +439,10 @@ MODAL
   }
 
 }
+
+  /* SETA PARA CIMA DA BIO NO CELULAR */
+
+  .bio-up {
+    z-index: 10;
+    top: 10px;
+  }
