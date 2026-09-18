@@ -374,3 +374,65 @@ if (event.key == "Escape") {
 }
 
 });
+
+// 67. GUARDAMOS A POSIÇÃO INICIAL DO TOQUE
+
+let touchStartX = 0;
+
+// 68. QUANDO O DEDO ENCOSTAR NA TELA
+
+photoModal.addEventListener("touchstart", function (event) {
+
+  touchStartX = event.touches[0].clientX;
+
+});
+
+// 79. QUANDO O DEDO SAIR DA TELA
+
+photoModal.addEventListener("touchend", function (event) {
+
+// 70. PEGAMOS A POSIÇÃO FINAL DO DEDO
+
+  const touchEndX = event.changedTouches[0].clientX;
+
+// 71. CALCULAMOS QUANTO O DEDO ANDOU
+
+  const touchDifference = touchEndX - touchStartX;
+
+// 72. SE ARRASTAMOS PARA A ESQUERDA
+
+  if (touchDifference < -50) {
+
+// 73. AVANÇAMOS PARA A PRÓXIMA FOTO
+
+    currentPhotoIndex++;
+
+    if (currentPhotoIndex >= photos.length) {
+
+      currentPhotoIndex = 0;
+
+    }
+
+    showPhoto(currentPhotoIndex);
+
+  }
+
+// 74. SE ARRASTAMOS PARA A DIREITA
+
+  if (touchDifference > 50) {
+
+// 75. VOLTAMOS PARA A FOTO ANTERIOR
+
+    currentPhotoIndex--;
+
+    if (currentPhotoIndex < 0) {
+
+      currentPhotoIndex = photos.length - 1;
+
+    }
+
+    showPhoto(currentPhotoIndex);
+
+  }
+
+});
