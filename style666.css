@@ -440,6 +440,16 @@ MODAL
 
 }
 
+  /* SETAS DA GALERIA NO CELULAR */
+
+  .photo-prev {
+    left: 10px;
+  }
+
+  .photo-next {
+    right: 10px;
+  }
+
   /* SETA PARA CIMA DA BIO NO CELULAR */
 
   .bio-up {
