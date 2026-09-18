@@ -437,80 +437,80 @@ photoModal.addEventListener("touchend", function (event) {
 
 });
 
-//76. VERIFICAMOS SE ESTAMOS EM UM DISPOSITIVO COM TOUCH  
+// 76. VERIFICAMOS SE ESTAMOS EM UM DISPOSITIVO COM TOUCH
 
 if (window.matchMedia("(hover: none)").matches) {
 
-  //77. ESCUTAMOS O SCROLL DA PAGINA
-
-  window.addEventListener("scroll"), function () {
-
-    //78. PEGAMOS O CENTRO DA TELA
-
-    const screenCenter = window.innerHeight / 2;
-
-    //79. GUARDAMOS O CARD MAIS PROXIMO DO CENTRO
-
-    let closestCard = null;
-
-    //80.GUARDAMOS A DISTANCIA DO CARD MAIS PROXIMO
-
-    let closestDistance = Infinity;
-
-    //81.VERIFICAMOS CADA CARD
-
-    cards.forEach(fuction (card) {
-
-    //82.PEGAMOS A POSICAO DO CARD NA TELA
-
-    const cardRect = card.getBoundingClientRect();
-
-      //83.CALCULAMOS O CENTRO DO CARD
-
-      const cardCenter = cardRect.top + cardRect.height / 2;
-
-      //84. CALCULAMOS A DISTANCIA ENTRE O CARD E O CENTRO DA TELA
-
-      const distance = Math.abs(screenCenter - cardCenter);
-
-      //85.VERIFICAMOS DSE ESTE É O CARD MAIS PROXIMO
-
-      if (distance < closestDistance) {
-
-        closestDistance = distance;
-
-        closestCard = card;
-
-      }
-
-    });
-
-//86.VERIFICAMOS SE ENCONTRAMOS UM CARD PROXIMO DO CENTRO
-
-      if (closestCard && closestDistance < 150) {
-
-        //87.RETIRAMOS O FOCO DOS OUTROS CARDS
-
-          cards.forEach(function (card) {
-
-            if (card !== closestCard) {
-
-              card.classList.remove("card-expanded");
-
-            }
-
-          });
- //88. COLOCAMOS O FOCO NO CARD CENTRAL
-          
- closestCard.classList.add("card-expanded");
-
- //90.DESFOCAMOS O FUNDO
-
-            document.querySelector(".page-background").classList.add("mobile-focused");
-
+  // 77. ESCUTAMOS O SCROLL DA PAGINA
+  
+    window.addEventListener("scroll", function () {
+  
+  // 78. PEGAMOS O CENTRO DA TELA
+  
+      const screenCenter = window.innerHeight / 2;
+  
+  // 79. GUARDAMOS O CARD MAIS PROXIMO DO CENTRO
+  
+      let closestCard = null;
+  
+  // 80. GUARDAMOS A DISTANCIA DO CARD MAIS PROXIMO
+  
+      let closestDistance = Infinity;
+  
+  // 81. VERIFICAMOS CADA CARD
+  
+      cards.forEach(function (card) {
+  
+  // 82. PEGAMOS A POSICAO DO CARD NA TELA
+  
+        const cardRect = card.getBoundingClientRect();
+  
+  // 83. CALCULAMOS O CENTRO DO CARD
+  
+        const cardCenter = cardRect.top + cardRect.height / 2;
+  
+  // 84. CALCULAMOS A DISTANCIA ENTRE O CARD E O CENTRO DA TELA
+  
+        const distance = Math.abs(screenCenter - cardCenter);
+  
+  // 85. VERIFICAMOS SE ESTE E O CARD MAIS PROXIMO
+  
+        if (distance < closestDistance) {
+  
+          closestDistance = distance;
+  
+          closestCard = card;
+  
         }
-
+  
       });
-
-    }
-    
+  
+  // 86. VERIFICAMOS SE ENCONTRAMOS UM CARD PROXIMO DO CENTRO
+  
+      if (closestCard && closestDistance < 150) {
+  
+  // 87. RETIRAMOS O FOCO DOS OUTROS CARDS
+  
+        cards.forEach(function (card) {
+  
+          if (card !== closestCard) {
+  
+            card.classList.remove("card-expanded");
+  
+          }
+  
+        });
+  
+  // 88. COLOCAMOS O FOCO NO CARD CENTRAL
+  
+        closestCard.classList.add("card-expanded");
+  
+  // 89. DESFOCAMOS O FUNDO
+  
+        document.querySelector(".page-background").classList.add("mobile-focused");
+  
+      }
+  
+    });
+  
+  }
