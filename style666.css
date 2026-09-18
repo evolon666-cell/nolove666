@@ -367,3 +367,64 @@ MODAL
     box-sizing: border-box;
     overflow-y: auto;
 }
+
+
+
+/* RESPONSIVO - CELULAR E TABLET */
+
+@media (max-width: 768px) {
+
+  /* CARDS */
+
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+  }
+
+  .card {
+    width: 90vw;
+    min-width: 0;
+    max-width: 500px;
+    height: 300px;
+    margin: 80px 0;
+  }
+
+  .card.card-expanded {
+    width: 90vw;
+    height: 75vh;
+  }
+
+  /* MENU */
+
+  nav ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  /* MODAL DA BIO */
+
+  .bio-modal-content {
+    width: 100%;
+    height: 100%;
+  }
+
+  .bio-modal .bio-content {
+    width: 85vw;
+    max-height: 75vh;
+  }
+
+  /* MODAL DAS FOTOS */
+
+  .photo-modal-content {
+    width: 100%;
+    height: 100%;
+  }
+
+  .photo-modal img {
+    max-width: 80vw;
+    max-height: 75vh;
+  }
+
+}
