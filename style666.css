@@ -374,6 +374,14 @@ MODAL
 
 @media (max-width: 768px) {
 
+  /* FUNDO */
+
+  .page-background {
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+  }
+
   /* CARDS */
 
   .cards-container {
@@ -396,7 +404,7 @@ MODAL
     height: 75vh;
   }
 
-  /* MENU */
+  /* CLICÁVEIS */
 
   nav ul {
     padding: 0;
