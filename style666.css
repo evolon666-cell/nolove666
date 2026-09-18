@@ -1,0 +1,369 @@
+/* =========================
+   FUNDO DA PÁGINA
+   ========================= */
+  body {
+    background-image: url(assets/logo2.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+.page-background{
+    position: fixed;
+    inset: 0;
+
+    background-image: url("assets/Logo2.jpeg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: top center;
+
+    z-index: -1;
+
+    transition: filter 0.5s;
+}
+/* =========================
+CLICÁVEIS
+========================= */
+.yt-logo{
+    width: 20px;
+    height: 20px;
+}
+.sc-logo{
+    width: 20px;
+    height: 20px;
+}
+.ig-logo{
+    width: 20px;
+    height: 20px;
+}
+
+nav ul{
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+nav a{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+        padding: 10px 20px;
+        background-color: #000000;
+        color: #f5f5f5;
+
+        border: 1px solid #ffffff;
+        border-radius: 50px;
+
+        text-decoration: none;
+        transition: 0.3s;
+}
+
+nav a:hover{
+    background-color: #ffffff;
+    color: #000000;
+}
+/* =========================
+CARD - REGRAS GERAIS
+========================= */
+
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+.card {
+    width: 500px;
+    min-width: 500px;
+    height: 300px;
+
+    margin: 180px 0;
+
+    position: relative;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    border-radius: 30px;
+
+    filter: blur(5px);
+    transition: 0.5s;
+
+    overflow: hidden;
+    
+}
+
+
+/* MOUSE EM CIMA */
+
+.card:hover {
+    filter: blur(0);
+}
+
+
+/* ========================
+CARD AMPLIADO PELO JS (classe .card-expanded)
+========================= */
+
+.card.card-expanded {
+    width: 80%;
+    height: 80vh;
+}
+
+
+/* FUNDO DO CARD DA BIO */
+
+.bio-background {
+    position: absolute;
+    inset: 0;
+
+    background-image: url("assets/logo3.jpeg");
+    background-size: cover;
+    background-position: center;
+    background: transparent;
+
+    border-radius: 30px;
+
+    z-index: 0;
+}
+
+
+/* CONTEÚDO DA BIO */
+
+.bio-content {
+    position: relative;
+    z-index: 1;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    padding: 25px;
+
+    border-radius: 20px;
+    color: #ffffff;
+}
+
+.bio-content h2 {
+    text-align: center;
+}
+
+.bio-content p {
+    text-indent: 30px;
+    margin-bottom: 10px;
+}
+
+
+/* =========================
+PHOTO CARD
+========================= */
+
+.photo-card.card-extended {
+}
+
+
+.photo-content {
+    position: relative;
+    z-index: 1;
+
+    box-sizing: border-box;
+
+    width: 100%;
+    height: auto;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    padding: 25px;
+
+    border-radius: 30px;
+
+    color: #ffffff;
+}
+
+
+.photo-gallery {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 5px;
+}
+
+
+.photo-gallery img {
+    width: 100%;
+    height: auto;
+
+    border-radius: 10px;
+}
+
+
+/* =========================
+EFEITO DO FUNDO
+========================= */
+
+body:has(.card:hover) .page-background,
+body:has(.card:hover) header,
+body:has(.card:hover) nav a, 
+body:has(.card.card-expanded) .page-background,
+body:has(.card.card-expanded) header {
+    filter: blur(5px);
+}
+
+
+/* =========================
+MODAL 
+==========================*/
+
+
+.bio-modal,
+.photo-modal{
+    position: fixed;
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.9);
+
+    z-index: 1000;
+}
+.bio-modal img,
+.photo-modal img{
+    max-width: 90vw;
+    max-height: 90vh;
+
+    object-fit: contain;
+    border-radius: 20px;
+}
+.bio-close,
+.photo-close{
+    position: absolute;
+
+    top: 20px;
+    right: 30px;
+
+    background: transparent;
+    border: none;
+
+    color: #ffffff;
+    font-size: 40px;
+
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.bio-modal.is-open,
+.photo-modal.is-open {
+    display: flex;
+}
+
+.photo-modal-content {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bio-up,
+.bio-down,
+.photo-prev,
+.photo-next {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+        padding: 10px 20px;
+        background-color: #000000;
+        color: #f5f5f5;
+
+        border: 1px solid #ffffff;
+        border-radius: 50px;
+
+        text-decoration: none;
+        transition: 0.3s;
+}
+
+.bio-up:hover,
+.photo-prev:hover{
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.bio-down:hover,
+.photo-next:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.photo-prev {
+    left: 20px;
+}
+.photo-next {
+    right: 20px;
+}
+
+.bio-close,
+.photo-close {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+        font-size: 10px;
+
+        padding: 10px 20px;
+        background-color: #000000;
+        color: #f5f5f5;
+
+        border: 1px solid #ffffff;
+        border-radius: 50px;
+
+        text-decoration: none;
+        transition: 0.3s;
+}
+
+.bio-close:hover,
+.photo-close:hover{
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* SETA PARA CIMA DA BIO */
+
+.bio-up {
+
+    position: absolute;
+
+    top: 20px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+}
+
+
+/* SETA PARA BAIXO DA BIO */
+
+.bio-down {
+
+    position: absolute;
+
+    bottom: 20px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+}
+/* CONTEUDO DA BIO DENTRO DA MODAL */
+
+.bio-modal .bio-content {
+    width: 70vw;
+    max-height: 70vh;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
