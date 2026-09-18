@@ -387,7 +387,7 @@ photoModal.addEventListener("touchstart", function (event) {
 
 });
 
-// 79. QUANDO O DEDO SAIR DA TELA
+// 69. QUANDO O DEDO SAIR DA TELA
 
 photoModal.addEventListener("touchend", function (event) {
 
@@ -439,7 +439,7 @@ photoModal.addEventListener("touchend", function (event) {
 
 // 76. VERIFICAMOS SE ESTAMOS EM UM DISPOSITIVO COM TOUCH
 
-if (window.matchMedia("(hover: none)").matches) {
+if (window.innerWidht <= 768) {
 
   // 77. ESCUTAMOS O SCROLL DA PAGINA
   
