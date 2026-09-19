@@ -387,7 +387,7 @@ photoModal.addEventListener("touchstart", function (event) {
 
 });
 
-// 69. QUANDO O DEDO SAIR DA TELA
+// 79. QUANDO O DEDO SAIR DA TELA
 
 photoModal.addEventListener("touchend", function (event) {
 
@@ -436,81 +436,80 @@ photoModal.addEventListener("touchend", function (event) {
   }
 
 });
+// 76. VERIFICAMOS SE ESTAMOS EM UMA TELA DE CELULAR
 
-// 76. VERIFICAMOS SE ESTAMOS EM UM DISPOSITIVO COM TOUCH
+if (window.innerWidth <= 768) {
 
-if (window.innerWidht <= 768) {
-
-  // 77. ESCUTAMOS O SCROLL DA PAGINA
+  // 77. CRIAMOS UMA FUNCAO PARA CONTROLAR O FOCO DOS CARDS
   
-    window.addEventListener("scroll", function () {
+      function updateMobileFocus() {
   
   // 78. PEGAMOS O CENTRO DA TELA
   
-      const screenCenter = window.innerHeight / 2;
+        const screenCenter = window.innerHeight / 2;
   
-  // 79. GUARDAMOS O CARD MAIS PROXIMO DO CENTRO
-  
-      let closestCard = null;
-  
-  // 80. GUARDAMOS A DISTANCIA DO CARD MAIS PROXIMO
-  
-      let closestDistance = Infinity;
-  
-  // 81. VERIFICAMOS CADA CARD
-  
-      cards.forEach(function (card) {
-  
-  // 82. PEGAMOS A POSICAO DO CARD NA TELA
-  
-        const cardRect = card.getBoundingClientRect();
-  
-  // 83. CALCULAMOS O CENTRO DO CARD
-  
-        const cardCenter = cardRect.top + cardRect.height / 2;
-  
-  // 84. CALCULAMOS A DISTANCIA ENTRE O CARD E O CENTRO DA TELA
-  
-        const distance = Math.abs(screenCenter - cardCenter);
-  
-  // 85. VERIFICAMOS SE ESTE E O CARD MAIS PROXIMO
-  
-        if (distance < closestDistance) {
-  
-          closestDistance = distance;
-  
-          closestCard = card;
-  
-        }
-  
-      });
-  
-  // 86. VERIFICAMOS SE ENCONTRAMOS UM CARD PROXIMO DO CENTRO
-  
-      if (closestCard && closestDistance < 150) {
-  
-  // 87. RETIRAMOS O FOCO DOS OUTROS CARDS
+  // 79. VERIFICAMOS CADA CARD
   
         cards.forEach(function (card) {
   
-          if (card !== closestCard) {
+  // 80. PEGAMOS A POSICAO DO CARD NA TELA
   
-            card.classList.remove("card-expanded");
+          const cardRect = card.getBoundingClientRect();
   
-          }
+  // 81. CALCULAMOS O CENTRO DO CARD
+  
+          const cardCenter = cardRect.top + cardRect.height / 2;
+  
+  // 82. CALCULAMOS A DISTANCIA ENTRE O CARD E O CENTRO DA TELA
+  
+          const distance = Math.abs(screenCenter - cardCenter);
+  
+  // 83. DEFINIMOS A AREA ONDE O FOCO VAI ACONTECER
+  
+          const focusRange = window.innerHeight * 0.45;
+  
+  // 84. CALCULAMOS QUANTO FOCO O CARD DEVE TER
+  
+          let focus = 1 - (distance / focusRange);
+  
+  // 85. LIMITAMOS O FOCO ENTRE 0 E 1
+  
+          focus = Math.max(0, Math.min(1, focus));
+  
+  // 86. CALCULAMOS O BLUR DO CARD
+  
+          const blur = 5 - (focus * 5);
+  
+  // 87. CALCULAMOS O TAMANHO DO CARD
+  
+          const scale = 1 + (focus * 0.04);
+  
+  // 88. ENVIAMOS O BLUR PARA O CSS
+  
+          card.style.setProperty("--mobile-blur", blur + "px");
+  
+  // 89. ENVIAMOS A ESCALA PARA O CSS
+  
+          card.style.setProperty("--mobile-scale", scale);
+  
+  // 90. TERMINAMOS A VERIFICACAO DOS CARDS
   
         });
   
-  // 88. COLOCAMOS O FOCO NO CARD CENTRAL
-  
-        closestCard.classList.add("card-expanded");
-  
-  // 89. DESFOCAMOS O FUNDO
-  
-        document.querySelector(".page-background").classList.add("mobile-focused");
-  
       }
   
-    });
+  // 91. ESCUTAMOS O SCROLL DA PAGINA
+  
+      window.addEventListener("scroll", function () {
+  
+  // 92. ATUALIZAMOS O FOCO
+  
+        updateMobileFocus();
+  
+      });
+  
+  // 93. VERIFICAMOS O FOCO ASSIM QUE A PAGINA CARREGAR
+  
+      updateMobileFocus();
   
   }
