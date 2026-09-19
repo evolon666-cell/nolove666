@@ -387,7 +387,7 @@ photoModal.addEventListener("touchstart", function (event) {
 
 });
 
-// 79. QUANDO O DEDO SAIR DA TELA
+// 69. QUANDO O DEDO SAIR DA TELA
 
 photoModal.addEventListener("touchend", function (event) {
 
@@ -438,7 +438,7 @@ photoModal.addEventListener("touchend", function (event) {
 });
 // 76. VERIFICAMOS SE ESTAMOS EM UMA TELA DE CELULAR
 
-if (window.innerWidth <= 768) {
+if (window.innerWidth <= 600) {
 
   // 77. CRIAMOS UMA FUNCAO PARA CONTROLAR O FOCO DOS CARDS
   
